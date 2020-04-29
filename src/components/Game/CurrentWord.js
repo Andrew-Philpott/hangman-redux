@@ -12,6 +12,7 @@ const useStyles = makeStyles({
 
 export default function CurrentWord(props) {
   const classes = useStyles();
+
   function generateWordFillIn() {
     const wordChars = props.word.split("").map((char) => {
       if (props.guesses.includes(char)) {
@@ -20,7 +21,6 @@ export default function CurrentWord(props) {
         return "_";
       }
     });
-    console.log(wordChars.join(""));
     return wordChars.join("");
   }
 
@@ -28,7 +28,7 @@ export default function CurrentWord(props) {
     <Grid>
       <div>
         <p>CurrentWordDisplay</p>
-        <HangmanDisplay badGuessCount={0} />
+        <HangmanDisplay badGuessCount={props.incorrectGuessCount} />
         <LetterDisplay wordAppearsAs={generateWordFillIn()} />
       </div>
     </Grid>

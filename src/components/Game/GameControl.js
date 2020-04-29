@@ -4,6 +4,7 @@ import LetterDisplay from "./LetterDisplay";
 import ScoreDisplay from "./ScoreDisplay";
 import HangmanDisplay from "./HangmanDisplay";
 import NewWordForm from "./NewWordForm";
+import GuessForm from "./GuessForm";
 import {
   Container,
   Grid,
@@ -14,14 +15,6 @@ import {
   withStyles,
   Badge,
 } from "@material-ui/core";
-import LetterInput from "./LetterInput";
-
-import hangman0 from "/../../public";
-import hangman1 from "/../../public";
-import hangman2 from "/../../public";
-import hangman3 from "/../../public";
-import hangman4 from "/../../public";
-import hangman5 from "/../../public";
 
 const gameControlStyle = {
   border: "2px solid blue",
@@ -38,18 +31,20 @@ class GameControl extends React.Component {
       word: "APPLE",
       guesses: ["P"],
       incorrectGuessCount: 0,
-      hangmanPictures: [
-        hangman0.png,
-        hangman1.png,
-        hangman2.png,
-        hangman3.png,
-        hangman4.png,
-        hangman5.png,
-      ],
+      isGameOver: false,
     };
   }
 
   // corresponding picture display would be hangmanPictures[incorrectGuessCount]
+
+  handleGuessFormSubmission = (char) => {
+    if (this.state.guesses.includes(char.toUpperCase())) {
+      // this letter has already been guessed
+    } else {
+      const newGuesses = this.state.guesses.concat(char.toUpperCase());
+      this.setState(newGuesses);
+    }
+  };
 
   render() {
     return (
@@ -59,11 +54,12 @@ class GameControl extends React.Component {
             <p>GameControl</p>
           </Grid>
           <Grid item xs={6}>
-            <LetterInput />
+            <GuessForm onSubmitLetterGuess={this.handleGuessFormSubmission} />
             <Container style={currentWordStyle}>
               <CurrentWord
                 word={this.state.word}
                 guesses={this.state.guesses}
+                incorrectGuessCount={this.state.incorrectGuessCount}
               />
             </Container>
           </Grid>
