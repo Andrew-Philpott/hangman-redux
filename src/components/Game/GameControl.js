@@ -30,10 +30,12 @@ class GameControl extends React.Component {
     this.state = {
       word: "APPLE",
       guesses: ["P"],
+      // BadGuesses: []
       incorrectGuessCount: 5,
       isGameOver: false,
     };
   }
+  // Create and Display array that is tracking and displaying within a component the characters within "BadGuesses" GameControl - CurrentWord- HangmanDisplay"
 
   handleGuessFormSubmission = (char) => {
     if (this.state.guesses.includes(char.toUpperCase())) {
