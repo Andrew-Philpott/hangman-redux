@@ -38,7 +38,7 @@ class GameControl extends React.Component {
       word: "APPLE",
       guesses: ["P"],
       incorrectGuessCount: 0,
-      HangmanPictures: [
+      hangmanPictures: [
         hangman0.png,
         hangman1.png,
         hangman2.png,
@@ -48,6 +48,8 @@ class GameControl extends React.Component {
       ],
     };
   }
+
+  // corresponding picture display would be hangmanPictures[incorrectGuessCount]
 
   render() {
     return (
