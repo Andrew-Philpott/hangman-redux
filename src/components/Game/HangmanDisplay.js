@@ -1,9 +1,21 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export default function hangmanDisplay(props) {
+export default function HangmanDisplay(props) {
+  const generateUrl = () => {
+    return "~/public/hangman" + props.badGuessCount + ".png";
+  };
+
   return (
     <div>
-      <h1>Hangman Body Display</h1>
+      <p>Hangman Body Display</p>
+      <img src={generateUrl()} />
     </div>
   );
 }
+
+HangmanDisplay.propTypes = {
+  badGuessCount: PropTypes.number,
+};
+
+//Input  word -> save word to state slice -> return back to page

@@ -3,7 +3,8 @@ import React from "react";
 export default function LetterDisplay(props) {
   return (
     <div>
-      <h1>Handles Displaying the already guessed incorrect Letters </h1>
+      <p>(Handles Displaying the already guessed incorrect Letters)</p>
+      <h1>{props.wordAppearsAs}</h1>
     </div>
   );
 }
