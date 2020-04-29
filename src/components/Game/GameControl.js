@@ -30,12 +30,10 @@ class GameControl extends React.Component {
     this.state = {
       word: "APPLE",
       guesses: ["P"],
-      incorrectGuessCount: 0,
+      incorrectGuessCount: 5,
       isGameOver: false,
     };
   }
-
-  // corresponding picture display would be hangmanPictures[incorrectGuessCount]
 
   handleGuessFormSubmission = (char) => {
     if (this.state.guesses.includes(char.toUpperCase())) {
