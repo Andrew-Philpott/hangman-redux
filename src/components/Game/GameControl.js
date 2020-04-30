@@ -1,20 +1,14 @@
 import React from "react";
-import CurrentWord from "./CurrentWord";
+import CurrentRound from "./CurrentRound";
 import LetterDisplay from "./LetterDisplay";
 import ScoreDisplay from "./ScoreDisplay";
 import HangmanDisplay from "./HangmanDisplay";
 import NewWordForm from "./NewWordForm";
+import * as a from "../../actions";
+//import * as constants from "../../actions/ActionTypes";
+import { connect } from "react-redux";
 import GuessForm from "./GuessForm";
-import {
-  Container,
-  Grid,
-  AppBar,
-  Toolbar,
-  Typography,
-  makeStyles,
-  withStyles,
-  Badge,
-} from "@material-ui/core";
+import { Container, Grid } from "@material-ui/core";
 
 const gameControlStyle = {
   border: "2px solid blue",
@@ -29,20 +23,25 @@ class GameControl extends React.Component {
     super(props);
     this.state = {
       word: "APPLE",
-      guesses: ["P"],
-      // BadGuesses: []
-      incorrectGuessCount: 5,
+      guesses: ["P", "X", "T"],
+      incorrectGuessCount: 1,
       isGameOver: false,
     };
   }
-  // Create and Display array that is tracking and displaying within a component the characters within "BadGuesses" GameControl - CurrentWord- HangmanDisplay"
+
+  handleNewWordFormSubmission = (word) => {
+    const { dispatch } = this.props;
+    const action = a.newWord(word);
+    const action2 = a.clearGuesses();
+    dispatch(action);
+    dispatch(action2);
+  };
 
   handleGuessFormSubmission = (char) => {
-    if (this.state.guesses.includes(char.toUpperCase())) {
-      // this letter has already been guessed
-    } else {
-      const newGuesses = this.state.guesses.concat(char.toUpperCase());
-      this.setState(newGuesses);
+    if (!this.props.guesses.includes(char)) {
+      const { dispatch } = this.props;
+      const action = a.updateGuesses(char);
+      dispatch(action);
     }
   };
 
@@ -51,20 +50,21 @@ class GameControl extends React.Component {
       <>
         <Grid style={gameControlStyle} container>
           <Grid item xs={12}>
-            <p>GameControl</p>
+            <NewWordForm
+              onSubmitNewWordForm={this.handleNewWordFormSubmission}
+            ></NewWordForm>
           </Grid>
           <Grid item xs={6}>
             <GuessForm onSubmitLetterGuess={this.handleGuessFormSubmission} />
             <Container style={currentWordStyle}>
-              <CurrentWord
-                word={this.state.word}
-                guesses={this.state.guesses}
+              <CurrentRound
+                word={this.props.word}
+                guesses={this.props.guesses}
                 incorrectGuessCount={this.state.incorrectGuessCount}
               />
             </Container>
           </Grid>
           <Grid xs={6}>
-            <NewWordForm />
             <ScoreDisplay />
           </Grid>
         </Grid>
@@ -72,5 +72,13 @@ class GameControl extends React.Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    word: state.word,
+    guesses: state.guesses,
+  };
+};
+
+GameControl = connect(mapStateToProps)(GameControl);
 
 export default GameControl;

@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  font-family: "Roboto", sans-serif;
+}
+
+.App h1 {
+  font-weight: 400;
 }
 
 .App-logo {

@@ -1,10 +1,16 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function LetterDisplay(props) {
   return (
     <div>
-      <p>(Handles Displaying the already guessed incorrect Letters)</p>
-      <h1>{props.wordAppearsAs}</h1>
+      <p>{props.wordAppearsAs}</p>
+      <p>Incorrect guesses: {props.incorrectLetters}</p>
     </div>
   );
 }
+
+LetterDisplay.propTypes = {
+  wordAppearsAs: PropTypes.string,
+  incorrectLetters: PropTypes.string,
+};

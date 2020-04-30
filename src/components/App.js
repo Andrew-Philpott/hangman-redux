@@ -5,7 +5,7 @@ import Header from "./Header";
 
 function App() {
   const bodyStyles = {
-    marginTop: 150,
+    marginTop: 40,
     fontSize: "1em",
   };
   return (

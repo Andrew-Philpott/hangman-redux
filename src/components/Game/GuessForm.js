@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 
 export default function GuessForm(props) {
   function handleSubmitGuess(event) {
-    //event.preventDefault(); // do we actually want to reload the page here? and clear the form?
-    props.onSubmitLetterGuess(event.target.guess.value);
+    event.preventDefault(); // do we actually want to reload the page here? and clear the form?
+    props.onSubmitLetterGuess(event.target.guess.value.toUpperCase());
+    event.target.guess.value = "";
   }
 
   return (

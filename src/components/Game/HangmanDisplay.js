@@ -19,11 +19,18 @@ const hangmanPictures = [
 ];
 
 export default function HangmanDisplay(props) {
-  const pic = hangmanPictures[props.badGuessCount];
+  let pic = null;
+  console.log(props.badGuessCount);
+  if (props.badGuessCount === -1) {
+    pic = hangmanPictures[0];
+  } else {
+    pic = hangmanPictures[props.badGuessCount];
+  }
+  // const pic = hangmanPictures[props.badGuessCount];
   return (
     <div>
       <p>Hangman Body Display</p>
-      <img src={hangmanPictures[props.badGuessCount]} />
+      <img src={pic} />
     </div>
   );
 }

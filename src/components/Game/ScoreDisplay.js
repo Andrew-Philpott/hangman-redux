@@ -1,15 +1,10 @@
 import React from "react";
-import { Grid, makeStyles } from "@material-ui/core";
+import { Grid, Container, makeStyles } from "@material-ui/core";
 import PropTypes from "prop-types";
-const useStyles = makeStyles({
-  navbar: {
-    backgroundColor: "purple",
-  },
-});
 
 export default function ScoreDisplay(props) {
   return (
-    <Grid container>
+    <Grid style={{ border: "2px solid green" }} container>
       <Grid xs={12}>
         <p>Score</p>
       </Grid>
