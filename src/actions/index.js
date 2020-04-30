@@ -5,10 +5,6 @@ export const newWord = (word) => ({
   payload: word.toUpperCase(),
 });
 
-export const clearWord = () => ({
-  type: "CLEAR_WORD",
-});
-
 export const updateGuesses = (guess) => ({
   type: "UPDATE_GUESSES",
   payload: guess,
