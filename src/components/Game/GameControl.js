@@ -11,16 +11,17 @@ import GuessForm from "./GuessForm";
 import { Container, Grid, Button } from "@material-ui/core";
 
 const gameControlStyle = {
-  border: "2px solid blue",
+  border: "2px solid #efefef",
+  padding: 20,
   borderRadius: 10,
   margin: 20,
 };
 
-const currentWordStyle = {
-  border: "2px solid red",
-  borderRadius: 10,
-  margin: 20,
-};
+// const currentWordStyle = {
+//   border: "2px solid #efefef",
+//   borderRadius: 10,
+//   margin: 20,
+// };
 
 class GameControl extends React.Component {
   constructor(props) {
@@ -98,23 +99,26 @@ class GameControl extends React.Component {
     } else {
       return (
         <>
-          <Grid style={gameControlStyle} container>
+          <Grid style={gameControlStyle}>
             {/* <Grid item xs={12}></Grid>
             <Grid item xs={6}> */}
-            <Container>
+            <h1>Hangman</h1>
+            <div>
               <GuessForm onSubmitLetterGuess={this.handleGuessFormSubmission} />
-            </Container>
-            <Container style={currentWordStyle}>
-              <CurrentRound
-                word={this.props.word}
-                guesses={this.props.guesses}
-                incorrectGuessCount={this.state.incorrectGuessCount}
-              />
-            </Container>
+              <div style={gameControlStyle}>
+                <CurrentRound
+                  word={this.props.word}
+                  guesses={this.props.guesses}
+                  incorrectGuessCount={this.state.incorrectGuessCount}
+                />
+              </div>
+            </div>
+
             {/* </Grid> */}
             {/* <Grid xs={6}>
               <ScoreDisplay />
             </Grid> */}
+            <Button onClick={this.handleStartNewGame}>Start Over</Button>
           </Grid>
         </>
       );

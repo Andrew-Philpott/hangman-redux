@@ -18,6 +18,12 @@ const hangmanPictures = [
   Hangman6,
 ];
 
+const imageStyle = {
+  border: "2px solid #efefef",
+  borderRadius: 10,
+  margin: 20,
+};
+
 export default function HangmanDisplay(props) {
   let pic = null;
   if (props.badGuessCount === -1) {
@@ -28,8 +34,9 @@ export default function HangmanDisplay(props) {
   // const pic = hangmanPictures[props.badGuessCount];
   return (
     <div>
-      <p>Hangman Body Display</p>
-      <img src={pic} />
+      <br />
+      <h1>Hangman</h1>
+      <img src={pic} style={imageStyle} />
     </div>
   );
 }

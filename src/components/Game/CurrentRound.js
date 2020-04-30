@@ -31,7 +31,6 @@ export default function CurrentWord(props) {
   return (
     <Grid>
       <div>
-        <p>CurrentWordDisplay</p>
         <HangmanDisplay badGuessCount={incorrectLetters().length} />
         <LetterDisplay
           wordAppearsAs={generateWordFillIn()}

@@ -13,7 +13,7 @@ export default function GuessForm(props) {
     <div>
       <form onSubmit={handleSubmitGuess}>
         {/* <label htmlFor="guess">Enter a letter </label> */}
-        <Input type="text" maxLength="1" size="1" name="guess" required />
+        <input type="text" maxLength="1" size="1" name="guess" required />
         <Button type="submit">Guess Letter</Button>
       </form>
     </div>
