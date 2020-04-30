@@ -12,10 +12,16 @@ export default function NewWordForm(props) {
   return (
     <Grid>
       <div style={{ border: "2 solid red" }}>
-        <h1>Input your word for the other player to guess!</h1>
+        <h1>Start new game</h1>
         <form onSubmit={handleSubmitGuess} method="get">
-          <label htmlFor="word">Enter a word</label>
-          <Input type="text" maxLength="20" name="word" required />
+          {/* <label htmlFor="word">Enter a word </label> */}
+          <Input
+            type="text"
+            maxLength="20"
+            name="word"
+            placeholder="Enter a word"
+            required
+          />
           <Button type="submit">Submit a new word </Button>
         </form>
       </div>

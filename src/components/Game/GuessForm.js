@@ -1,4 +1,5 @@
 import React from "react";
+import { Button, Input, Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
 
 export default function GuessForm(props) {
@@ -10,11 +11,10 @@ export default function GuessForm(props) {
 
   return (
     <div>
-      <h1>Handles the Users Guess</h1>
       <form onSubmit={handleSubmitGuess}>
-        <label htmlFor="guess">Enter a letter</label>
-        <input type="text" maxLength="1" size="1" name="guess" required />
-        <button type="submit">Guess</button>
+        {/* <label htmlFor="guess">Enter a letter </label> */}
+        <Input type="text" maxLength="1" size="1" name="guess" required />
+        <Button type="submit">Guess Letter</Button>
       </form>
     </div>
   );

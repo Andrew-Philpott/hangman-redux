@@ -20,7 +20,6 @@ const hangmanPictures = [
 
 export default function HangmanDisplay(props) {
   let pic = null;
-  console.log(props.badGuessCount);
   if (props.badGuessCount === -1) {
     pic = hangmanPictures[0];
   } else {
